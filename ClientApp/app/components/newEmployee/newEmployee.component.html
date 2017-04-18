@@ -1,0 +1,83 @@
+﻿<style>
+    .hidedata {
+        padding-top:50px;
+    }
+</style>
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="col-md-8 col-lg-offset-4">
+            <h3>Enter Employee Details</h3>
+        </div>
+        
+                <div class="row hidedata" id="hidDiv">
+                    <div class="col-md-6 ">
+                        <form class="form-horizontal" [formGroup]="formData" (ngSubmit)="submitData()">
+                            <div class="form-group">
+                                <label for="EmployeeName" class="col-sm-4 control-label">Employee Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control"
+                                     name="EmployeeName" placeholder="Employee Name"
+                                          formControlName="EmployeeName" >
+                                </div>
+                                <div *ngIf="!formData.get('EmployeeName').valid && formData.get('EmployeeName').dirty"
+                                     class="col-sm-8 col-sm-offset-4" style="color:red">
+                                  Add Employee Name 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Designation" class="col-sm-4 control-label">Designation</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control"
+                                           name="Designation" placeholder="Designation"
+                                           formControlName="Designation">
+                                </div>
+                                <div *ngIf="!formData.get('Designation').valid && formData.get('Designation').dirty"
+                                     class="col-sm-8 col-sm-offset-4" style="color:red">
+                                    Add Employee Designation
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Skills" class="col-sm-4 control-label">Skills</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control"
+                                           name="Skills" placeholder="Employee Skills"
+                                           formControlName="Skills">
+
+                                </div>
+                                <div *ngIf="!formData.get('Skills').valid && formData.get('Skills').dirty"
+                                     class="col-sm-8 col-sm-offset-4" style="color:red">
+                                    Add Skills of Employee 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ProjectId" class="col-sm-4 control-label">Project</label>
+                                <div class="col-sm-8">
+                                   <select class="form-control" name="Project"
+                                          formControlName="Project" >
+                                       <option value="0">---Select---</option>
+                                       <option *ngFor="let data of ProjectList" value={{data.projectId}}>
+                                           {{data.projectName}}
+                                       </option>
+                                   </select>
+
+                                </div>
+                                <div *ngIf="!formData.get('Project').valid && formData.get('Project').dirty"
+                                     class="col-sm-8 col-sm-offset-4" style="color:red">
+                                    Select a Project for Employee
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                    <button type="submit" [disabled]="!formData.valid" class="btn btn-info">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                
+
+    </div>
+</div>   
